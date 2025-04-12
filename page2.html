@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Preparing Your Journey</title>
+  <style>
+    body {
+      background: url('https://source.unsplash.com/featured/?vacation,sea') no-repeat center center/cover;
+      color: white;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      padding-top: 20%;
+    }
+    #timer {
+      font-size: 24px;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hold Tight! Preparing Your Trip...</h1>
+  <div id="timer">10</div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const videoLink = urlParams.get('link');
+    let timeLeft = 10;
+
+    const timer = setInterval(() => {
+      if (timeLeft <= 0) {
+        clearInterval(timer);
+        window.location.href = `page3.html?link=${encodeURIComponent(videoLink)}`;
+      } else {
+        document.getElementById('timer').innerText = timeLeft + ' seconds';
+        timeLeft -= 1;
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
